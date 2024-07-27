@@ -1,0 +1,55 @@
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+
+<html> 
+    <head> 
+        <meta charset="utf-8" />
+        
+        <meta name = "viewport" content="width-device-width, initial-scale=1, maximum-scale=1"/>
+
+
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/solar/bootstrap.min.css">
+        
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        
+        <title> TaskManabu | Create task </title>
+
+    
+    </head>
+
+    {% include 'profile/base.html'%}
+    <br>
+    <h3 class="text-center"> Create a task</h3>
+
+    <hr>
+    
+    <div class="container bg-white shadow-md p-5 form-layout "style="margin-top:20px;">
+
+        <form method="POST" autocomplete="off">
+
+            {% csrf_token %}
+
+            {{ form.title|as_crispy_field}}
+
+            <br> <br>
+
+            {{ form.content|as_crispy_field}}
+
+            <br> <br>
+
+            {{ form.priority|as_crispy_field}}
+
+            <br> <br>
+
+            <input class="btn btn-primary navbar-btn" type="submit" value="Create a task" />
+
+
+        </form>
+    </div>
+
+    <br>
+
+</html>

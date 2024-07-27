@@ -1,0 +1,92 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<html>  
+    <head> 
+        <meta charset="utf-8" />
+        
+        <meta name = "viewport" content="width-device-width, initial-scale=1, maximum-scale=1"/>
+
+
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/solar/bootstrap.min.css">
+        
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        
+        <title> TaskManabu | My login </title>
+    
+    </head>
+    <style>
+        body {
+            background-image: url('https://cdn5.vectorstock.com/i/1000x1000/77/14/top-view-office-workplace-background-vector-20487714.jpg');
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed; 
+            background-repeat: no-repeat; 
+        }
+    </style>
+
+    {% include 'pre_base.html'%}
+
+    <br>
+    <div class="container bg-white shadow-md p-5 form-layout">
+
+    <h1> Login Page! </h1>
+    <h4> Login to manage your tasks</h4>
+
+    <hr>
+    
+    <br>
+
+        <form method="POST" autocomplete="off">
+
+            {% csrf_token %}
+
+            {{ form.username|as_crispy_field}}
+
+            <br>
+
+            {{ form.password|as_crispy_field}}
+
+            <br> <br>
+
+            <input class="btn btn-primary navbar-btn" type="submit" value="Login" />
+
+            <br> <br>
+
+            {% for message in messages %}
+
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+
+                   <p id="message-timer" class="alert alert-success float-center text-center message_text"> {{message}} </p>
+
+
+                {% endif %}
+
+            {% endfor %}
+
+            
+
+            <p> Don't have an account? <a href="{% url 'register' %}"> <br> Register </a></p>
+
+        </form>
+
+    </div>
+
+    <br>
+
+    <script src="{% static 'js/app.js' %}"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"  crossorigin="anonymous"></script>
+
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+
+    crossorigin="anonymous">
+
+    </script>
+
+</html>

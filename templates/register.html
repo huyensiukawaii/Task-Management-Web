@@ -1,0 +1,75 @@
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+
+<html> 
+    <head> 
+        <meta charset="utf-8" />
+        
+        <meta name = "viewport" content="width-device-width, initial-scale=1, maximum-scale=1"/>
+
+
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/solar/bootstrap.min.css">
+        
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        
+        <title> TaskManabu | Register </title>
+    
+        <style>
+            body {
+                background-image: url('https://cdn5.vectorstock.com/i/1000x1000/77/14/top-view-office-workplace-background-vector-20487714.jpg');
+                background-size: cover; 
+                background-position: center; 
+                background-attachment: fixed; 
+                background-repeat: no-repeat; 
+            }
+        </style>
+    </head>
+
+    {% include 'pre_base.html'%}
+
+    <br>
+    <div class="container bg-white shadow-md p-5 form-layout">
+
+        <h1> Registration page! </h1>
+
+        <hr>
+
+        <br>
+
+        <form method="POST" autocomplete="off">
+
+            {% csrf_token %}
+
+            {{ form.username|as_crispy_field}}
+
+            <br> <br>
+
+            {{ form.email|as_crispy_field}}
+
+            <br> <br>
+
+            {{ form.password1|as_crispy_field}}
+
+            <br> 
+
+            {{ form.password2|as_crispy_field}}
+
+            <br> <br>
+
+
+            <input class="btn btn-primary navbar-btn" type="submit" value="Register" />
+
+            <br> <br>
+
+            <p> Already have an account? <a href="{% url 'my_login' %}"> <br> Login </a></p>
+
+            
+
+        </form>
+    </div>
+
+    <br>
+
+</html>

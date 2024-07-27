@@ -1,0 +1,52 @@
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+
+<html> 
+    <head> 
+        <meta charset="utf-8" />
+        
+        <meta name = "viewport" content="width-device-width, initial-scale=1, maximum-scale=1"/>
+
+
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/solar/bootstrap.min.css">
+        
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        
+        <title> TaskManabu | Delete task </title>
+    
+    </head>
+    
+    {% include 'profile/base.html'%}
+
+    <br>
+    <div class="container bg-white shadow-md p-5 form-layout">
+
+        <h3> Delete account </h3>
+
+        <hr>
+
+        <br>
+
+        <form method="POST" autocomplete="off">
+
+            {% csrf_token %}
+
+            <p> Are you sure that you want to delete this account?</p> 
+            
+            <br> 
+
+            <input class="btn btn-primary navbar-btn" type="submit" value="Delete account" />
+            
+            <br> <br>
+            
+            <a href="{% url 'profile_management' %}"> Go back </a>
+
+        </form>
+    </div>
+
+    <br>
+
+</html>

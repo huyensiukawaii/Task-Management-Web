@@ -1,0 +1,54 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<html> 
+
+    <head> 
+        <meta charset="utf-8" />
+        
+        <meta name = "viewport" content="width-device-width, initial-scale=1, maximum-scale=1"/>
+
+
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/solar/bootstrap.min.css">
+        
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        
+        <title> TaskManabu | Dashboard </title>
+        
+        <style>
+            .custom-layout {
+                width: 600px; 
+            }
+
+            .custom-layout p {
+                font-size: 18px; 
+            }
+
+            .custom-layout a {
+                font-size: 20px; 
+                font-weight: bold; 
+            }
+        </style>
+    </head>
+
+    {% include 'profile/base.html'%}
+    <br>
+    <div class="container bg-white shadow-md p-5 form-layout custom-layout">
+
+        <h1> Welcome {{user.username}}!</h1>
+
+        <hr>
+
+
+        <img style ="width: 500px;" src="{{profile.profile_pic.url}}"/>
+
+        
+
+        <br> <br>
+
+        <p>  TaskManabu - Your personal task manager application</p>
+
+        <a href="{% url 'profile_management' %}"> Profile management </a>
+
+    </div>
+
+</html>

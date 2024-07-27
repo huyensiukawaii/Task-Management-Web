@@ -1,0 +1,113 @@
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+
+<html> 
+    <head> 
+        <meta charset="utf-8" />
+        
+        <meta name = "viewport" content="width-device-width, initial-scale=1, maximum-scale=1"/>
+
+
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/solar/bootstrap.min.css">
+        
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        
+        <title> TaskManabu | Profile management </title>
+    
+    </head>
+
+    {% include 'profile/base.html'%}
+    <br>
+    <h3 class="text-center"> Update your profile </h3>
+
+    <hr>
+    
+    <div class="container bg-white shadow-md p-5 form-layout"style="margin-top:20px;">
+
+        <form method="POST" autocomplete="off">
+
+            {% csrf_token %}
+
+            {{ user_form.username|as_crispy_field}}
+
+            <br> <br>
+
+            {{ user_form.email|as_crispy_field}}
+
+            <br> <br>
+
+            <input class="btn btn-primary navbar-btn" type="submit" value="Update profile" />
+
+
+        </form>
+    </div>
+
+    <br>
+
+    <div class="container bg-white shadow-md p-5 form-layout"style="margin-top:20px;">
+
+        <h3> Update your profile picture </h3>
+
+        <hr>
+
+        <form method="POST" autocomplete="off" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            {{ form_2 }}
+
+            <br> <br>
+
+            <input class="btn btn-primary navbar-btn" type="submit" value="Update profile picture" />
+
+
+        </form>
+        
+        
+    </div>
+
+    <br>
+
+    <div class="container bg-white shadow-md p-5 form-layout"style="margin-top:20px;">
+
+        <h3> Delete account </h3>
+
+        <hr>
+
+            <a class="btn btn-primary navbar-btn" type="button" href="{% url 'delete_account' %}">Delete account </a>
+        
+        
+    </div>
+
+    <br>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

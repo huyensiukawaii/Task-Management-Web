@@ -1,0 +1,61 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/solar/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <title>TaskManabu | View tasks</title>
+</head>
+
+{% include 'profile/base.html' %}
+
+<body>
+    <br>
+    <h3 class="text-center">View tasks</h3>
+    <hr>
+
+    <div class="container bg-white shadow-md p-5 form-layout" style="margin-top:20px;">
+        <form method="GET">
+            <div class="form-group">
+                <label for="priority">Priority:</label>
+                <select name="priority" id="priority" class="form-control">
+                    <option value="" {% if selected_priority == "" %}selected{% endif %}>All</option>
+                    <option value="Low" {% if selected_priority == "Low" %}selected{% endif %}>Low</option>
+                    <option value="Medium" {% if selected_priority == "Medium" %}selected{% endif %}>Medium</option>
+                    <option value="High" {% if selected_priority == "High" %}selected{% endif %}>High</option>
+                </select>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+    </div>
+
+    {% if tasks %}
+        {% for tsk in tasks %}
+            <div class="container bg-white shadow-md p-5 form-layout" style="margin-top:20px;">
+                <strong>Title:</strong> {{ tsk.title }}
+                <br><br>
+                <strong>Content:</strong> {{ tsk.content }}
+                <br><br>
+                <strong>Date Posted:</strong> {{ tsk.date_posted|date:"d/m/Y H:i:s" }}
+                <br><br>
+                <strong>Priority:</strong>
+                <span class="priority-{{ tsk.priority }}">
+                    {{ tsk.get_priority_display }}
+                </span>
+                <br><br>
+                <a class="btn btn-info navbar-btn" type="button" href="{% url 'update_task' tsk.id %}">Update task</a>
+                <br><br>
+                <a class="btn btn-danger navbar-btn" type="button" href="{% url 'delete_task' tsk.id %}">Delete task</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="container bg-white shadow-md p-5 form-layout" style="margin-top:20px;">
+            <p>No tasks found.</p>
+        </div>
+    {% endif %}
+</body>
+</html>

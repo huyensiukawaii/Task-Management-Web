@@ -1,0 +1,52 @@
+
+
+.form-layout
+{
+
+    border-radius: 10px;
+
+    width: 500px;
+    
+}
+
+
+.message_text{
+
+    color: white;
+
+}
+
+.priority-low {
+    color: green !important;
+    font-weight: bold;
+}
+
+.priority-medium {
+    color: orange !important;
+    font-weight: bold;
+}
+
+.priority-high {
+    color: red !important;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
